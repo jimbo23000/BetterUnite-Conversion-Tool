@@ -1,12 +1,14 @@
-import os
 import csv
-import shutil
-
+# Used for outputting a copy of the template CSV
+from shutil import copyfile
+# If unable to pip install this python module, look into brew install
+# Used for protecting paths from public environments
 from dotenv import load_dotenv
+from os import environ
 
 # Creates output CSV, which will be altered using a writer object
 def create_output_csv(csv_src_path, csv_dst_path):
-    shutil.copyfile(csv_src_path, csv_dst_path)
+    copyfile(csv_src_path, csv_dst_path)
     
 # Returns field names for mapping inputs from the GUI
 def create_dict(csv_path):
@@ -15,14 +17,14 @@ def create_dict(csv_path):
         field_names = list()
         for column in reader:
             field_names.append(column)
-        #for element in dict:
-        #   print(', '.join(element))
+        # for element in field_names:
+            # print('\n'.join(element))
         return field_names
 
 def main():
     load_dotenv()
-    csv_src_path = os.environ.get('CSV_SRC_PATH')
-    csv_dst_path = os.environ.get('CSV_DST_PATH')
+    csv_src_path = environ.get('CSV_SRC_PATH')
+    csv_dst_path = environ.get('CSV_DST_PATH')
     create_output_csv(csv_src_path, csv_dst_path)
     global field_names
     field_names = create_dict(csv_src_path)

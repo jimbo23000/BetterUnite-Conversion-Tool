@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import ttk 
+# Used for creating a dictionary of user inputs, which will be passed into a CSV writer object
 from parse_csv import field_names
 
 def execute_mainloop():
