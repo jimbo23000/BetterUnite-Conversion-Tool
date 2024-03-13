@@ -15,10 +15,10 @@ def create_dict(csv_path):
     with open(csv_path, newline='') as csvfile:
         reader = csv.reader(csvfile, delimiter=',', quotechar='|')
         field_names = list()
+        # Important to use extend rather than append in this instance
         for column in reader:
-            field_names.append(column)
-        # for element in field_names:
-            # print('\n'.join(element))
+            field_names.extend(column)
+        field_names.reverse()
         return field_names
 
 def main():
