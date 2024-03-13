@@ -6,8 +6,8 @@ Executable designed to output a CSV file of donor information based on a provide
 * [Senior Access](https://senioraccesstx.org/)
 
 # Project Goals
-- [X] Determine optimal programming language to use for csv creation and management.
-    - [X] Research feeding in a template csv file for further flexibility.
+- [X] Determine optimal programming language to use for CSV creation and management.
+    - [X] Research feeding in a template CSV file for further flexibility.
 - [ ] Create main executable functionality.
 - [ ] Begin user interface creation to facilitate functionality and accessibility.
     - [ ] Research user interface libraries to decrease development time.
