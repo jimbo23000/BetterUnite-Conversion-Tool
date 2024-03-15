@@ -1,9 +1,13 @@
 from tkinter import *
 from tkinter import ttk 
 # Used for creating a dictionary of user inputs, which will be passed into a CSV writer object
-from parse_csv import field_names
+from parse_csv import keys
 
 class GUI:
+    key_index = 0
+    values = list()
+    csv_row_entrys = list()
+
     def __init__(self):
         # Main menu portion
         root = Tk(className=' Donor Information')
@@ -14,7 +18,7 @@ class GUI:
 
         # Donor menu portion
         dm_frame = ttk.Frame(root, padding=10)
-        dm_label = ttk.Label(dm_frame, text=field_names.pop(), padding=10)
+        dm_label = ttk.Label(dm_frame, text=keys[GUI.key_index], padding=10)
         dm_label.grid(row=0, column=0)
         dm_entry = ttk.Entry(dm_frame)
         dm_entry.grid(row=0, column=1)
@@ -50,7 +54,15 @@ class GUI:
 
     # Updates the donor menu label and entry each time the user 'returns'
     def update_dm_frame(self):
-        self.dm_label.configure(text=field_names.pop())
+        GUI.values.extend(self.dm_entry.get())
+        if (GUI.key_index >= len(keys) - 1):
+            csv_row_entry = dict.fromkeys(keys, GUI.values)
+            GUI.csv_row_entrys.extend(csv_row_entry)
+            GUI.key_index = 0
+            GUI.values.clear()
+        else:
+            GUI.key_index += 1
+        self.dm_label.configure(text=keys[GUI.key_index])
         self.dm_entry.delete(0, 'end')
 
 def main():

@@ -11,22 +11,21 @@ def create_output_csv(csv_src_path, csv_dst_path):
     copyfile(csv_src_path, csv_dst_path)
     
 # Returns field names for mapping inputs from the GUI
-def create_dict(csv_path):
+def create_keys(csv_path):
     with open(csv_path, newline='') as csvfile:
         reader = csv.reader(csvfile, delimiter=',', quotechar='|')
-        field_names = list()
+        keys = list()
         # Important to use extend rather than append in this instance
         for column in reader:
-            field_names.extend(column)
-        field_names.reverse()
-        return field_names
+            keys.extend(column)
+        return keys
 
 def main():
     load_dotenv()
     csv_src_path = environ.get('CSV_SRC_PATH')
     csv_dst_path = environ.get('CSV_DST_PATH')
     create_output_csv(csv_src_path, csv_dst_path)
-    global field_names
-    field_names = create_dict(csv_src_path)
+    global keys
+    keys = create_keys(csv_src_path)
 
 main()
