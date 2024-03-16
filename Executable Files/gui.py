@@ -66,9 +66,10 @@ class GUI:
 
     # Updates the donor menu
     def update_dm_frame(self):
-        self.values.extend(self.dm_entry.get())
+        self.values.append(self.dm_entry.get())
         if (self.keys_index >= self.keys_length - 1):
-            self.csv_row_entries.extend(dict.fromkeys(self.keys, self.values))
+            csv_row_entry = {self.keys[i]: self.values[i] for i in range(len(self.values))}
+            self.csv_row_entries.append(csv_row_entry)
             # Reset for next donor
             self.keys_index = 0
             self.values.clear()
@@ -84,5 +85,6 @@ class GUI:
 
     # Uploads CSV row entries and terminates the program
     def dm_se_button_clicked(self):
+        GUI.dm_nd_button_clicked(self)
         parse.create_output_csv(self.csv_path, self.keys, self.csv_row_entries)
         self.root.destroy()

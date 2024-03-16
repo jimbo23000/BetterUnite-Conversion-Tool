@@ -16,5 +16,4 @@ def create_output_csv(csv_path, keys, csv_row_entries):
         writer = csv.DictWriter(csvfile, fieldnames=keys)
         writer.writeheader()
         for csv_row_entry in csv_row_entries:
-            print(csv_row_entry)
             writer.writerow(csv_row_entry)
