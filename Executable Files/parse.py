@@ -6,8 +6,8 @@ def create_keys(csv_path):
         reader = csv.reader(csvfile, delimiter=',', quotechar='|')
         keys = list()
         # Important to use extend rather than append in this instance
-        for column in reader:
-            keys.extend(column)
+        for header in reader:
+            keys.extend(header)
         return keys
     
 # Will create the output CSV based on the template CSV's keys and user inputted values
