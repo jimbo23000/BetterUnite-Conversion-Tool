@@ -1,4 +1,4 @@
-# Donor Information Executable
+# BetterUnite Conversion Tool
 Executable designed to output a CSV file of donor information based on a provided CSV template file.
 
 # Client List
