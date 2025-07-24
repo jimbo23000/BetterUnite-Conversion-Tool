@@ -1,4 +1,7 @@
+.vscode
+.DS_Store
+
+.env
 /Executable Files/__pycache__/
 /Output CSVs/Donor Information.csv
 /Template CSVs/Better Unite Template.csv
-.env
